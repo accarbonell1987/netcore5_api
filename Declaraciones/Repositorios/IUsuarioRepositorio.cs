@@ -50,18 +50,19 @@ namespace Declaraciones.Repositorios {
     /// Método de implementación que permite crear un registro de un Usuario en la base de datos
     /// </summary>
     /// <param name="Usuario">Objeto Usuario</param>
-    void CrearUsuario(User Usuario);
+    void CrearUsuario(User usuario);
 
     /// <summary>
     /// Método de implementación que permite hacer una actualización en la base de datos de un Usuario
     /// </summary>
-    /// <param name="Usuario">Objeto Usuario con datos provenientes de la base de datos</param>
-    void ActualizarUsuario(User Usuario);
+    /// <param name="usuarioBD">Objeto Usuario con datos provenientes de la base de datos</param>
+    /// <param name="usuario">Objeto Usuario con los datos a actualizar</param>
+    void ActualizarUsuario(User usuarioBD, User usuario);
 
     /// <summary>
     /// Método de implementación que permite eliminar un registro de la base de datos de un Usuario
     /// </summary>
     /// <param name="Usuario">Objeto Usuario</param>
-    void EliminarUsuario(User Usuario);
+    void EliminarUsuario(User usuario);
   }
 }
