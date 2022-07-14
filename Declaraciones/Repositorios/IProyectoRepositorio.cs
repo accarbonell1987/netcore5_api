@@ -63,7 +63,5 @@ namespace Declaraciones.Repositorios {
     /// </summary>
     /// <param name="Proyecto">Objeto Proyecto</param>
     void EliminarProyecto(Project Proyecto);
-
-    void AdicionarBug();
   }
 }
