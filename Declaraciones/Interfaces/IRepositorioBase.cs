@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
-//using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Declaraciones.Interfaces
@@ -79,7 +78,7 @@ namespace Declaraciones.Interfaces
         /// <param name="consultaNativa">Consulta Nativa de tipo String</param>
         /// <param name="parametros">Lista de parametros</param>
         /// <returns>Objeto Consulta Linq</returns>
-        //IQueryable<T> EncontrarPorConsultaNativa(string consultaNativa, IList<SqlParameter> parametros);
+        IQueryable<T> EncontrarPorConsultaNativa(string consultaNativa, IList<SqlParameter> parametros);
 
         /// <summary>
         /// Método de implementación que permite obtener los datos utilizando una consulta de tipo nativa
@@ -95,7 +94,7 @@ namespace Declaraciones.Interfaces
         /// <param name="consultaNativa">Consulta Nativa de tipo String</param>
         /// <param name="parametros">Lista de parametros</param>
         /// <returns>Objeto Consulta Linq</returns>
-        //IQueryable<T> EncontrarPorConsultaNativa(string consultaNativa, SqlParameter[] parametros);
+        IQueryable<T> EncontrarPorConsultaNativa(string consultaNativa, SqlParameter[] parametros);
 
         /// <summary>
         /// Método Asíncrono de implementación que permite guardar los cambios CRUD

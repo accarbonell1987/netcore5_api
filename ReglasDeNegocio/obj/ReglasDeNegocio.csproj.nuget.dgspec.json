@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\ReglasDeNegocio\\ReglasDeNegocio.csproj": {}
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\ReglasDeNegocio\\ReglasDeNegocio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\ReglasDeNegocio\\ReglasDeNegocio.csproj": {
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\ReglasDeNegocio\\ReglasDeNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\ReglasDeNegocio\\ReglasDeNegocio.csproj",
+        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\ReglasDeNegocio\\ReglasDeNegocio.csproj",
         "projectName": "ReglasDeNegocio",
-        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\ReglasDeNegocio\\ReglasDeNegocio.csproj",
+        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\ReglasDeNegocio\\ReglasDeNegocio.csproj",
         "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\ReglasDeNegocio\\obj\\",
+        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\ReglasDeNegocio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",

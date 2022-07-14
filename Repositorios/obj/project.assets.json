@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Repositorios\\Repositorios.csproj",
+      "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\Repositorios.csproj",
       "projectName": "Repositorios",
-      "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Repositorios\\Repositorios.csproj",
+      "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\Repositorios.csproj",
       "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Repositorios\\obj\\",
+      "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",

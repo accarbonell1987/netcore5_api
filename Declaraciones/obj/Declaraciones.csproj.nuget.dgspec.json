@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Declaraciones\\Declaraciones.csproj": {}
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj": {}
   },
   "projects": {
-    "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Declaraciones\\Declaraciones.csproj": {
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Declaraciones\\Declaraciones.csproj",
+        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj",
         "projectName": "Declaraciones",
-        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Declaraciones\\Declaraciones.csproj",
+        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj",
         "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Declaraciones\\obj\\",
+        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Entidades\\Entidades.csproj"
+              "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj"
               }
             }
           }
@@ -43,6 +43,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -62,14 +68,14 @@
         }
       }
     },
-    "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",

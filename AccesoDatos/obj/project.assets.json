@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\AccesoDatos\\AccesoDatos.csproj",
+      "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\AccesoDatos.csproj",
       "projectName": "AccesoDatos",
-      "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\AccesoDatos\\AccesoDatos.csproj",
+      "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\AccesoDatos.csproj",
       "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Tech Interview\\VamosTodos\\Challange\\BugWeb\\api\\BugsAPI\\AccesoDatos\\obj\\",
+      "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",
