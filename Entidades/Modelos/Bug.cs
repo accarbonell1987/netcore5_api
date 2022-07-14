@@ -25,7 +25,7 @@ namespace Entidades.Modelos {
     public Project Proyecto { get; set; }
 
     public int UserOfBugId { get; set; }
-    public User User { get; set; }
+    public User Usuario { get; set; }
     #endregion
   }
 }

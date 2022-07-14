@@ -28,7 +28,7 @@ namespace Entidades {
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
       modelBuilder.Entity<User>()
             .HasOne(s => s.UserBug)
-            .WithOne(ad => ad.User)
+            .WithOne(ad => ad.Usuario)
             .HasForeignKey<Bug>(ad => ad.UserOfBugId);
     }
 

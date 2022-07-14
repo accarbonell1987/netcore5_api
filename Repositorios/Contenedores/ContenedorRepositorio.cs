@@ -1,15 +1,9 @@
 ﻿using Declaraciones.Repositorios;
 using Entidades;
-using Entidades.Ayudas;
-using Entidades.Modelo;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using Repositorio.Contenedores.Interfaces;
 using Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Repositorio.Contenedores
@@ -47,9 +41,23 @@ namespace Repositorio.Contenedores
             }
         }
 
-        public IBugRepositorio Bug => throw new NotImplementedException();
+        public IBugRepositorio Bug {
+            get {
+                if (this.bug == null) {
+                    this.bug = new BugRepositorio(this.contextoBD);
+                }
+                return this.bug;
+            }
+        }
 
-        public IProyectoRepositorio Proyecto => throw new NotImplementedException();
+        public IProyectoRepositorio Proyecto {
+            get {
+                if (this.proyecto == null) {
+                    this.proyecto = new ProyectoRepositorio(this.contextoBD);
+                }
+                return this.proyecto;
+            }
+        }
 
         /// <summary>
         /// Método para guardar cambios en los repositorios.

@@ -4,6 +4,198 @@
     "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\ReglasDeNegocio\\ReglasDeNegocio.csproj": {}
   },
   "projects": {
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\AccesoDatos.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\AccesoDatos.csproj",
+        "projectName": "AccesoDatos",
+        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\AccesoDatos.csproj",
+        "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.107\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj",
+        "projectName": "Declaraciones",
+        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj",
+        "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.107\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj",
+        "projectName": "Entidades",
+        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj",
+        "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.107\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\ReglasDeNegocio\\ReglasDeNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +219,78 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\AccesoDatos.csproj": {
+                "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\AccesoDatos\\AccesoDatos.csproj"
+              },
+              "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj"
+              },
+              "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\Repositorios.csproj": {
+                "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\Repositorios.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.107\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\Repositorios.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\Repositorios.csproj",
+        "projectName": "Repositorios",
+        "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\Repositorios.csproj",
+        "packagesPath": "C:\\Users\\accar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Repositorios\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\accar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj": {
+                "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Declaraciones\\Declaraciones.csproj"
+              },
+              "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\accar\\Documents\\Trabajo\\Github\\TechInterview\\netcore5_api\\Entidades\\Entidades.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

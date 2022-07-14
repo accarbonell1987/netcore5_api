@@ -15,53 +15,54 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace BugsAPI {
-  public class Startup {
-    #region Atributos
-    public IConfiguration Configuration { get; }
-    #endregion
+    public class Startup {
+        #region Atributos
+        public IConfiguration Configuration { get; }
+        #endregion
 
-    #region Constructor
-    public Startup(IConfiguration configuration) {
-      Configuration = configuration;
+        #region Constructor
+        public Startup(IConfiguration configuration) {
+            Configuration = configuration;
+        }
+        #endregion
+
+        #region Servicios
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services) {
+            services.ConfigurarCors();
+            services.ConfigurarContextoSQLServer(Configuration);
+            services.ConfiguraContenedoresRepositorios();
+            services.AddControllers();
+            services.ConfigurarSwaggerGen();
+        }
+        #endregion
+
+        #region Configuracion
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+            if (env.IsDevelopment()) {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BugsAPI v1"));
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseCors("CorsPolicy");
+
+            app.UseMiddlewares();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+            });
+
+            //Inicializar datos en base de datos
+            Inicializacion.InicializarBaseDatos(app);
+        }
+        #endregion
     }
-    #endregion
-
-    #region Servicios
-    // This method gets called by the runtime. Use this method to add services to the container.
-    public void ConfigureServices(IServiceCollection services) {
-      services.ConfigurarCors();
-      services.ConfigurarContextoSQLServer(Configuration);
-      services.AddControllers();
-      services.ConfigurarSwaggerGen();
-    }
-    #endregion
-
-    #region Configuracion
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-      if (env.IsDevelopment()) {
-        app.UseDeveloperExceptionPage();
-        app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BugsAPI v1"));
-      }
-
-      app.UseHttpsRedirection();
-
-      app.UseRouting();
-
-      app.UseCors("CorsPolicy");
-
-      app.UseMiddlewares();
-
-      app.UseAuthorization();
-
-      app.UseEndpoints(endpoints => {
-        endpoints.MapControllers();
-      });
-
-      //Inicializar datos en base de datos
-      Inicializacion.InicializarBaseDatos(app);
-    }
-    #endregion
-  }
 }
