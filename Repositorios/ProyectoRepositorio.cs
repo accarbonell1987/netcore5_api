@@ -13,8 +13,11 @@ using System.Threading.Tasks;
 
 namespace Repositorios {
     public class ProyectoRepositorio : RepositorioBase<Project>, IProyectoRepositorio {
+        private readonly ContextoBD _contextDb;
 
-        public ProyectoRepositorio(ContextoBD contextoBD) : base(contextoBD) { }
+        public ProyectoRepositorio(ContextoBD contextoBD) : base(contextoBD) { 
+            _contextDb = contextoBD;
+        }
 
         /// <summary>
         /// Método que permite hacer una actualización en la base de datos de un Proyecto
@@ -95,7 +98,7 @@ namespace Repositorios {
         /// <param name="idProyecto">Id de Proyecto</param>
         /// <returns>Objeto Proyecto</returns>
         public Project ObtenerProyectoPorId(int idProyecto) {
-            var ProyectoEncontrado = this.EncontrarPorCondicion(Proyecto => Proyecto.IdProyecto.Equals(idProyecto));
+            var ProyectoEncontrado = this.EncontrarPorCondicion(Proyecto => Proyecto.Id.Equals(idProyecto));
             return ProyectoEncontrado.AsEnumerable().DefaultIfEmpty(new Project()).FirstOrDefault();
         }
 
@@ -105,7 +108,7 @@ namespace Repositorios {
         /// <param name="idProyecto">Id de Proyecto</param>
         /// <returns>Objeto Proyecto</returns>
         public async Task<Project> ObtenerProyectoPorIdAsinc(int idProyecto) {
-            var ProyectoEncontrado = this.EncontrarPorCondicion(Proyecto => Proyecto.IdProyecto.Equals(idProyecto));
+            var ProyectoEncontrado = this.EncontrarPorCondicion(Proyecto => Proyecto.Id.Equals(idProyecto));
             return await Task.FromResult(ProyectoEncontrado.AsEnumerable().DefaultIfEmpty(new Project()).FirstOrDefault());
         }
     }

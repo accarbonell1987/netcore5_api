@@ -22,35 +22,39 @@ namespace ReglasDeNegocio {
             _log = log;
         }
 
-        public async Task AdicionarBug(Project proyecto, User usuario, string descripcion) {
-            //buscar un bug que este asignado al usuario dentro del proyecto
-            var bug = await _contenedorRepositorio.Bug.ObtenerBugPorUsuarioYProyetoAsinc(usuario.IdUsuario, proyecto.IdProyecto);
+        public async Task<Bug> AdicionarBug(Project proyecto, User usuario, string descripcion) {
+            try {
+                //buscar un bug que este asignado al usuario dentro del proyecto
+                var bug = await _contenedorRepositorio.Bug.ObtenerBugPorUsuarioYProyetoAsinc(usuario.Id, proyecto.Id);
 
-            //si existe lo actualizo sino lo creo
-            if (!bug.EsObjetoNulo()) {
-                bug.DescripcionBug = descripcion;
-                bug.CreacionBug = System.DateTime.Now;
-            } else {
-                _contenedorRepositorio.Bug.CrearBug(new Bug() {
-                    CreacionBug = System.DateTime.Now,
-                    DescripcionBug = descripcion,
-                    UsuarioId = usuario.IdUsuario,
-                    ProyectoId = proyecto.IdProyecto,
-                });
+                //si existe lo actualizo sino lo creo
+                if (!bug.EsObjetoNulo()) {
+                    bug.DescripcionBug = descripcion;
+                    bug.CreacionBug = System.DateTime.Now;
+                } else {
+                    bug = new Bug() {
+                        CreacionBug = DateTime.Now,
+                        DescripcionBug = descripcion,
+                        ProyectoId = proyecto.Id,
+                        UsuarioId = usuario.Id,
+                    };
+                    _contenedorRepositorio.Bug.CrearBug(bug);
+                    proyecto.Bugs.Add(bug);
+                }
+
+                await _contenedorRepositorio.GuardarAsinc();
+
+                return bug;
+            } catch (Exception ex) {
+                _log.LogInformation($"Error en la Regla de Negocios: BugRN.AdicionarBug: {ex.Message} {ex.InnerException.Message}");
+                throw new Exception(ex.Message);
             }
-
-            await _contenedorRepositorio.GuardarAsinc();
         }
-
-        
 
         public async Task<IEnumerable<Bug>> ObtenerBugsPorProyecto(int project_id) {
             try {
-                var proyecto = await _contenedorRepositorio.Proyecto.ObtenerProyectoPorIdAsinc(project_id);
-
-                if (proyecto == null) return new List<Bug>();
-
-                return proyecto.Bugs;
+                var bugs = await _contenedorRepositorio.Bug.ObtenerBugsPorProyetoAsinc(project_id);
+                return bugs;
             } catch (Exception ex) {
                 _log.LogInformation($"Error en la Regla de Negocios: BugRN.ObtenerBugsPorProyecto: {ex.Message} {ex.InnerException.Message}");
                 throw new Exception(ex.Message);
@@ -62,7 +66,7 @@ namespace ReglasDeNegocio {
                 if (user_id == null) return null; 
                 
                 var usuario = await _contenedorRepositorio.Usuario.ObtenerUsuarioPorIdAsinc((int)user_id);
-                return usuario?.UserBug;
+                return usuario?.Bug;
             } catch (Exception ex) {
                 _log.LogInformation($"Error en la Regla de Negocios: BugRN.ObtenerBugsPorUsuario: {ex.Message} {ex.InnerException.Message}");
                 throw new Exception(ex.Message);
@@ -75,7 +79,7 @@ namespace ReglasDeNegocio {
 
                 if (proyecto == null) return new List<Bug>();
 
-                return proyecto.Bugs.Where(p => p.UsuarioId == user_id).ToList();
+                return proyecto.Bugs.Where(p => p.Usuario.Id == user_id).ToList();
             } catch (Exception ex) {
                 _log.LogInformation($"Error en la Regla de Negocios: BugRN.ObtenerBugsPorProyectoYUsuario: {ex.Message} {ex.InnerException.Message}");
                 throw new Exception(ex.Message);
@@ -88,7 +92,7 @@ namespace ReglasDeNegocio {
 
                 if (proyecto == null) return new List<Bug>();
 
-                return proyecto.Bugs.Where(p => p.UsuarioId == user_id && p.CreacionBug >= startDate && p.CreacionBug <= endDate).ToList();
+                return proyecto.Bugs.Where(p => p.Usuario.Id == user_id && p.CreacionBug >= startDate && p.CreacionBug <= endDate).ToList();
             } catch (Exception ex) {
                 _log.LogInformation($"Error en la Regla de Negocios: BugRN.ObtenerBugsPorProyectoUsuarioFecha: {ex.Message} {ex.InnerException.Message}");
                 throw new Exception(ex.Message);

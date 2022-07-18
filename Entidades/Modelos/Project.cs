@@ -9,7 +9,7 @@ namespace Entidades.Modelos {
         #region Propiedades
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdProyecto { get; set; }
+        public int Id { get; set; }
 
         public string NombreProyecto { get; set; }
 
@@ -17,7 +17,7 @@ namespace Entidades.Modelos {
         #endregion
 
         #region Relaciones
-        public virtual ICollection<Bug> Bugs { get; set; }
+        public IList<Bug> Bugs { get; set; }
         #endregion
 
         #region Constructor

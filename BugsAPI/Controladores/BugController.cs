@@ -44,9 +44,8 @@ namespace BugsAPI.Controladores {
                 var usuario = await _reglasNegocios.UsuarioRN.ObtenerUsuarioPorIdAsinc(data.user);
                 if (usuario.EsObjetoNulo()) return NoContent();
 
-                await _reglasNegocios.BugRN.AdicionarBug(proyecto, usuario, data.description);
-
-                return Ok();
+                var bug = await _reglasNegocios.BugRN.AdicionarBug(proyecto, usuario, data.description);
+                return Ok(bug);
             } catch (Exception ex) {
                 _logger.LogError($"ERROR en controlador BugController.AdicionarBug {ex.Message} {ex.InnerException.Message}");
                 return StatusCode(StatusCodes.Status500InternalServerError, "Falla del origen de datos.");
@@ -91,7 +90,7 @@ namespace BugsAPI.Controladores {
 
                 //si viene usuario, busco si existen datos en bugs sino busco en la bd
                 if (user_id.HasValue) {
-                    Bug bugOfUser = bugs.Any() ? bugs.FirstOrDefault(p => p.UsuarioId == user_id) : await _reglasNegocios.BugRN.ObtenerBugPorUsuario(user_id);
+                    Bug bugOfUser = bugs.Any() ? bugs.FirstOrDefault(p => p.Usuario.Id == user_id) : await _reglasNegocios.BugRN.ObtenerBugPorUsuario(user_id);
 
                     return Ok(bugOfUser);
                 }

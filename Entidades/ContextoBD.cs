@@ -26,10 +26,16 @@ namespace Entidades {
     /// </summary>
     /// <param name="builder">variable de construccion del EF</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
-        //modelBuilder.Entity<User>()
-        //    .HasOne(s => s.UserBug)
-        //    .WithOne(ad => ad.Usuario)
-        //    .HasForeignKey<Bug>(ad => ad.UserIdOfBug);
+        modelBuilder.Entity<Project>()
+            .HasMany(p => p.Bugs)
+            .WithOne(b => b.Proyecto);
+
+        modelBuilder.Entity<User>()
+            .HasOne(u => u.Bug)
+            .WithOne(b => b.Usuario)
+            .HasForeignKey<Bug>(b => b.UsuarioId);
+
+        //base.OnModelCreating(modelBuilder);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {

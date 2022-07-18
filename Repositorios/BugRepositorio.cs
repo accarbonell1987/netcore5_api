@@ -97,7 +97,7 @@ namespace Repositorios {
         /// <param name="idBug">Id de bug</param>
         /// <returns>Objeto bug</returns>
         public Bug ObtenerBugPorId(int idBug) {
-            var bugEncontrado = this.EncontrarPorCondicion(bug => bug.IdBug.Equals(idBug));
+            var bugEncontrado = this.EncontrarPorCondicion(bug => bug.Id.Equals(idBug));
             return bugEncontrado.AsEnumerable().DefaultIfEmpty(new Bug()).FirstOrDefault();
         }
 
@@ -107,7 +107,7 @@ namespace Repositorios {
         /// <param name="idBug">Id de bug</param>
         /// <returns>Objeto bug</returns>
         public async Task<Bug> ObtenerBugPorIdAsinc(int idBug) {
-            var bugEncontrado = this.EncontrarPorCondicion(bug => bug.IdBug.Equals(idBug));
+            var bugEncontrado = this.EncontrarPorCondicion(bug => bug.Id.Equals(idBug));
             return await Task.FromResult(bugEncontrado.AsEnumerable().DefaultIfEmpty(new Bug()).FirstOrDefault());
         }
 
@@ -119,8 +119,19 @@ namespace Repositorios {
         /// <param name="idProyecto">idProyecto</param>
         /// <returns>Bug</returns>
         public async Task<Bug> ObtenerBugPorUsuarioYProyetoAsinc(int idUsuario, int idProyecto) {
-            var bugEncontrado = this.EncontrarPorCondicion(bug => bug.ProyectoId.Equals(idProyecto) && bug.UsuarioId.Equals(idUsuario));
+            var bugEncontrado = this.EncontrarPorCondicion(bug => bug.Proyecto.Id.Equals(idProyecto) && bug.Usuario.Id.Equals(idUsuario));
             return await Task.FromResult(bugEncontrado.AsEnumerable().DefaultIfEmpty(null).FirstOrDefault());
+        }
+
+        /// <summary>
+        /// Método de implementación asíncrono que permite obtener de la base de datos los Bugs por medio del
+        /// id de proyecto
+        /// </summary>
+        /// <param name="idProyecto">idProyecto</param>
+        /// <returns>Lista de Bugs</returns>
+        public async Task<IEnumerable<Bug>> ObtenerBugsPorProyetoAsinc(int idProyecto) {
+            var Bugs = this.EncontrarPorCondicion(b => b.ProyectoId == idProyecto);
+            return await Task.FromResult(Bugs.ToList());
         }
     }
 }

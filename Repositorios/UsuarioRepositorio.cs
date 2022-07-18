@@ -97,7 +97,7 @@ namespace Repositorios {
     /// <param name="idUsuario">Id de Usuario</param>
     /// <returns>Objeto Usuario</returns>
     public User ObtenerUsuarioPorId(int idUsuario) {
-      var usuarioEncontrado = this.EncontrarPorCondicion(usuario => usuario.IdUsuario.Equals(idUsuario));
+      var usuarioEncontrado = this.EncontrarPorCondicion(usuario => usuario.Id.Equals(idUsuario));
       return usuarioEncontrado.AsEnumerable().DefaultIfEmpty(new User()).FirstOrDefault();
     }
 
@@ -107,7 +107,7 @@ namespace Repositorios {
     /// <param name="idUsuario">Id de Usuario</param>
     /// <returns>Objeto Usuario</returns>
     public async Task<User> ObtenerUsuarioPorIdAsinc(int idUsuario) {
-      var usuarioEncontrado = this.EncontrarPorCondicion(usuario => usuario.IdUsuario.Equals(idUsuario));
+      var usuarioEncontrado = this.EncontrarPorCondicion(usuario => usuario.Id.Equals(idUsuario));
       return await Task.FromResult(usuarioEncontrado.AsEnumerable().DefaultIfEmpty(new User()).FirstOrDefault());
     }
   }
