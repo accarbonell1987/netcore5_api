@@ -32,6 +32,7 @@ namespace BugsAPI {
             services.ConfigurarCors();
             services.ConfigurarContextoSQLServer(Configuration);
             services.ConfiguraContenedoresRepositorios();
+            services.ConfigurarCapaReglaNegocios();
             services.AddControllers();
             services.ConfigurarSwaggerGen();
         }

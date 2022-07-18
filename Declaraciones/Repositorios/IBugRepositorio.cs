@@ -42,9 +42,18 @@ namespace Declaraciones.Repositorios {
         /// <summary>
         /// Método de implementación asíncrono que permite obtener de la base de datos un Bug por medio de su Id
         /// </summary>
-        /// <param name="idBug"></param>
+        /// <param name="idBug">idBug</param>
         /// <returns></returns>
         Task<Bug> ObtenerBugPorIdAsinc(int idBug);
+
+        /// <summary>
+        /// Método de implementación asíncrono que permite obtener de la base de datos un Bug por medio del
+        /// id de proyecto y usuario
+        /// </summary>
+        /// <param name="idUsuario">idUsuario</param>
+        /// <param name="idProyecto">idProyecto</param>
+        /// <returns>Bug</returns>
+        Task<Bug> ObtenerBugPorUsuarioYProyetoAsinc(int idUsuario, int idProyecto);
 
         /// <summary>
         /// Método de implementación que permite crear un registro de un Bug en la base de datos

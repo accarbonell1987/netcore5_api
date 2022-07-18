@@ -6,6 +6,9 @@ using Microsoft.OpenApi.Models;
 using Entidades;
 using Repositorio.Contenedores.Interfaces;
 using Repositorio.Contenedores;
+using ReglasNegocio.Contenedor.Interfaces;
+using ReglasNegocio.Contenedor;
+using ReglasDeNegocio;
 
 namespace BugsAPI.Extensiones {
     public static class ServiceExtension {
@@ -51,6 +54,18 @@ namespace BugsAPI.Extensiones {
         /// <param name="services">Services</param>
         public static void ConfiguraContenedoresRepositorios(this IServiceCollection services) {
             services.AddScoped<IContenedorRepositorio, ContenedorRepositorio>();
+        }
+
+        /// <summary>
+        /// Configura toda la capa de Reglas de Negocios
+        /// </summary>
+        /// <param name="services">Services.</param>
+        public static void ConfigurarCapaReglaNegocios(this IServiceCollection services) {
+            services.AddScoped<IContenedorReglasNegocios, ContenedorReglasNegocios>();
+            services.AddScoped<ContenedorReglasNegocios>();
+            services.AddScoped<BugRN>();
+            services.AddScoped<UsuarioRN>();
+            services.AddScoped<ProyectoRN>();
         }
     }
 }

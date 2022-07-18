@@ -110,5 +110,17 @@ namespace Repositorios {
             var bugEncontrado = this.EncontrarPorCondicion(bug => bug.IdBug.Equals(idBug));
             return await Task.FromResult(bugEncontrado.AsEnumerable().DefaultIfEmpty(new Bug()).FirstOrDefault());
         }
+
+        /// <summary>
+        /// Método de implementación asíncrono que permite obtener de la base de datos un Bug por medio del
+        /// id de proyecto y usuario
+        /// </summary>
+        /// <param name="idUsuario">idUsuario</param>
+        /// <param name="idProyecto">idProyecto</param>
+        /// <returns>Bug</returns>
+        public async Task<Bug> ObtenerBugPorUsuarioYProyetoAsinc(int idUsuario, int idProyecto) {
+            var bugEncontrado = this.EncontrarPorCondicion(bug => bug.ProyectoId.Equals(idProyecto) && bug.UsuarioId.Equals(idUsuario));
+            return await Task.FromResult(bugEncontrado.AsEnumerable().DefaultIfEmpty(null).FirstOrDefault());
+        }
     }
 }

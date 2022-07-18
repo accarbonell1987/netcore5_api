@@ -2,6 +2,7 @@ C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\b
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\bin\Debug\net5.0\AccesoDatos.dll
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\bin\Debug\net5.0\ref\AccesoDatos.dll
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\bin\Debug\net5.0\AccesoDatos.pdb
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\obj\Debug\net5.0\AccesoDatos.csproj.AssemblyReference.cache
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\obj\Debug\net5.0\AccesoDatos.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\obj\Debug\net5.0\AccesoDatos.AssemblyInfoInputs.cache
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\obj\Debug\net5.0\AccesoDatos.AssemblyInfo.cs
