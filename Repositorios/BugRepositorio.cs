@@ -133,5 +133,16 @@ namespace Repositorios {
             var Bugs = this.EncontrarPorCondicion(b => b.ProyectoId == idProyecto);
             return await Task.FromResult(Bugs.ToList());
         }
+
+        /// <summary>
+        /// Método de implementación asíncrono que permite obtener de la base de datos los Bugs por medio del
+        /// id de usuario
+        /// </summary>
+        /// <param name="idUsuario">idUsuario</param>
+        /// <returns>Lista de Bugs</returns>
+        public async Task<IEnumerable<Bug>> ObtenerBugsPorUsuarioAsinc(int idUsuario) {
+            var Bugs = this.EncontrarPorCondicion(b => b.UsuarioId == idUsuario);
+            return await Task.FromResult(Bugs.ToList());
+        }
     }
 }

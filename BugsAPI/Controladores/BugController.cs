@@ -76,24 +76,29 @@ namespace BugsAPI.Controladores {
                 
                 IEnumerable<Bug> bugs = new List<Bug>();
                 
-                //si viene el proyecto entonces filtro busco los proyectos
-                if (project_id.HasValue) 
+                //busqueda cuando existe la doble condicion de usuario y proyecto
+                if (project_id.HasValue && user_id.HasValue) 
+                    bugs = await _reglasNegocios.BugRN.ObtenerBugsPorProyectoYUsuario((int)project_id, (int)user_id);
+
+                //cuando solo existe proyecto
+                if (!bugs.Any() && project_id.HasValue) 
                     bugs = await _reglasNegocios.BugRN.ObtenerBugsPorProyecto((int)project_id);
 
-                //si viene con rango de fecha
-                var validoStartDate = DateTime.TryParse(start_date, out DateTime convertidoStartDate);
-                var validoEndDate = DateTime.TryParse(end_date, out DateTime convertidoEndDate);
+                //cuando solo existe usuario
+                if (!bugs.Any() && user_id.HasValue)
+                    bugs = await _reglasNegocios.BugRN.ObtenerBugsPorUsuario((int)user_id);
 
-                if (validoStartDate && validoEndDate && convertidoEndDate > convertidoStartDate) {
-                    bugs = bugs.Where(p => p.CreacionBug >= convertidoStartDate && p.CreacionBug <= convertidoEndDate);
-                }
+                //si existen rango de fechas
+                if (bugs.Any()) {
+                    //si viene con rango de fecha
+                    var validoStartDate = DateTime.TryParse(start_date, out DateTime convertidoStartDate);
+                    var validoEndDate = DateTime.TryParse(end_date, out DateTime convertidoEndDate);
 
-                //si viene usuario, busco si existen datos en bugs sino busco en la bd
-                if (user_id.HasValue) {
-                    Bug bugOfUser = bugs.Any() ? bugs.FirstOrDefault(p => p.Usuario.Id == user_id) : await _reglasNegocios.BugRN.ObtenerBugPorUsuario(user_id);
-
-                    return Ok(bugOfUser);
-                }
+                    if (validoStartDate && validoEndDate && convertidoEndDate > convertidoStartDate) {
+                        bugs = bugs.Where(p => p.CreacionBug >= convertidoStartDate && p.CreacionBug <= convertidoEndDate);
+                    }
+                } else 
+                    return StatusCode(StatusCodes.Status404NotFound, "No existen datos para mostrar"));
 
                 return Ok(bugs);
             } catch (Exception ex) {

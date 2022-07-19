@@ -61,12 +61,10 @@ namespace ReglasDeNegocio {
             }
         }
 
-        public async Task<Bug> ObtenerBugPorUsuario(int? user_id) {
+        public async Task<IEnumerable<Bug>> ObtenerBugsPorUsuario(int user_id) {
             try {
-                if (user_id == null) return null; 
-                
-                var usuario = await _contenedorRepositorio.Usuario.ObtenerUsuarioPorIdAsinc((int)user_id);
-                return usuario?.Bug;
+                var bugs = await _contenedorRepositorio.Bug.ObtenerBugsPorUsuarioAsinc(user_id);
+                return bugs;
             } catch (Exception ex) {
                 _log.LogInformation($"Error en la Regla de Negocios: BugRN.ObtenerBugsPorUsuario: {ex.Message} {ex.InnerException.Message}");
                 throw new Exception(ex.Message);
