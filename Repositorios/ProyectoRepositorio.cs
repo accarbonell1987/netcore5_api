@@ -110,7 +110,7 @@ namespace Repositorios {
         /// <returns>Objeto Proyecto</returns>
         public async Task<Project> ObtenerProyectoPorIdAsinc(int idProyecto) {
             var ProyectoEncontrado = _contextDb.Projects
-                .Include(p => p.Bugs.Select(u => u.Usuario))
+                .Include("Bugs.Usuario")
                 .FirstOrDefault(p => p.Id == idProyecto);
             return await Task.FromResult(ProyectoEncontrado);
         }
