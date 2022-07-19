@@ -73,11 +73,8 @@ namespace ReglasDeNegocio {
 
         public async Task<IEnumerable<Bug>> ObtenerBugsPorProyectoYUsuario(int project_id, int user_id) {
             try {
-                var proyecto = await _contenedorRepositorio.Proyecto.ObtenerProyectoPorIdAsinc(project_id);
-
-                if (proyecto == null) return new List<Bug>();
-
-                return proyecto.Bugs.Where(p => p.Usuario.Id == user_id).ToList();
+                var bugs = await _contenedorRepositorio.Bug.ObtenerBugsPorUsuarioYProyetoAsinc(user_id, project_id);
+                return bugs;
             } catch (Exception ex) {
                 _log.LogInformation($"Error en la Regla de Negocios: BugRN.ObtenerBugsPorProyectoYUsuario: {ex.Message} {ex.InnerException.Message}");
                 throw new Exception(ex.Message);

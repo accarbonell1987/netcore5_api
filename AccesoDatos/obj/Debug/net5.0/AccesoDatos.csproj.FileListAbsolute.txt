@@ -9,3 +9,4 @@ C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\o
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\obj\Debug\net5.0\AccesoDatos.dll
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\obj\Debug\net5.0\ref\AccesoDatos.dll
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\obj\Debug\net5.0\AccesoDatos.pdb
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\AccesoDatos\obj\Debug\net5.0\AccesoDatos.csproj.AssemblyReference.cache

@@ -66,3 +66,6 @@ C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\BugsAPI\obj\D
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\BugsAPI\obj\Debug\net5.0\ref\BugsAPI.dll
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\BugsAPI\obj\Debug\net5.0\BugsAPI.pdb
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\BugsAPI\obj\Debug\net5.0\BugsAPI.genruntimeconfig.cache
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\BugsAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\BugsAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\BugsAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

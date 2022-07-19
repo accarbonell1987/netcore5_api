@@ -12,3 +12,4 @@ C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Entidades\obj
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Entidades\obj\Debug\net5.0\ref\Entidades.dll
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Entidades\obj\Debug\net5.0\Entidades.pdb
 C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Entidades\obj\Debug\net5.0\Entidades.genruntimeconfig.cache
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Entidades\obj\Debug\net5.0\Entidades.csproj.AssemblyReference.cache

@@ -4,6 +4,7 @@ using Entidades.Modelo.Extensiones;
 using Entidades.Modelos;
 using Entidades.Utilidades.Paginado;
 using Entidades.Utilidades.Paginado.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Repositorio.Base;
 using Repositorio.Utilidad;
 using System;
@@ -13,8 +14,11 @@ using System.Threading.Tasks;
 
 namespace Repositorios {
     public class BugRepositorio : RepositorioBase<Bug>, IBugRepositorio {
+        private readonly ContextoBD _contextDb;
 
-        public BugRepositorio(ContextoBD contextoBD) : base(contextoBD) { }
+        public BugRepositorio(ContextoBD contextoBD) : base(contextoBD) { 
+            this._contextDb = contextoBD;
+        }
 
         /// <summary>
         /// Método que permite hacer una actualización en la base de datos de un Bug
@@ -119,8 +123,26 @@ namespace Repositorios {
         /// <param name="idProyecto">idProyecto</param>
         /// <returns>Bug</returns>
         public async Task<Bug> ObtenerBugPorUsuarioYProyetoAsinc(int idUsuario, int idProyecto) {
-            var bugEncontrado = this.EncontrarPorCondicion(bug => bug.Proyecto.Id.Equals(idProyecto) && bug.Usuario.Id.Equals(idUsuario));
-            return await Task.FromResult(bugEncontrado.AsEnumerable().DefaultIfEmpty(null).FirstOrDefault());
+            var Bugs = _contextDb.Bug
+                .Include(p => p.Proyecto)
+                .Include(u => u.Usuario)
+                .Where(b => b.ProyectoId == idProyecto && b.UsuarioId == idUsuario);
+            return await Task.FromResult(Bugs.AsEnumerable().DefaultIfEmpty(null).FirstOrDefault());
+        }
+
+        /// <summary>
+        /// Método de implementación asíncrono que permite obtener de la base de datos  Bugs por medio del
+        /// id de proyecto y usuario
+        /// </summary>
+        /// <param name="idUsuario">idUsuario</param>
+        /// <param name="idProyecto">idProyecto</param>
+        /// <returns>Lista de Bugs</returns>
+        public async Task<IEnumerable<Bug>> ObtenerBugsPorUsuarioYProyetoAsinc(int idUsuario, int idProyecto) {
+            var Bugs = _contextDb.Bug
+                .Include("Proyecto")
+                .Include("Usuario")
+                .Where(b => b.ProyectoId == idProyecto && b.UsuarioId == idUsuario);
+            return await Task.FromResult(Bugs.AsEnumerable());
         }
 
         /// <summary>
@@ -130,8 +152,13 @@ namespace Repositorios {
         /// <param name="idProyecto">idProyecto</param>
         /// <returns>Lista de Bugs</returns>
         public async Task<IEnumerable<Bug>> ObtenerBugsPorProyetoAsinc(int idProyecto) {
-            var Bugs = this.EncontrarPorCondicion(b => b.ProyectoId == idProyecto);
-            return await Task.FromResult(Bugs.ToList());
+            var Proyecto = _contextDb.Projects
+                .Include("Bugs.Usuario")
+                .FirstOrDefault(p => p.Id == idProyecto);
+
+            var Bugs = Proyecto?.Bugs;
+
+            return await Task.FromResult(Bugs.AsEnumerable());
         }
 
         /// <summary>
@@ -141,8 +168,11 @@ namespace Repositorios {
         /// <param name="idUsuario">idUsuario</param>
         /// <returns>Lista de Bugs</returns>
         public async Task<IEnumerable<Bug>> ObtenerBugsPorUsuarioAsinc(int idUsuario) {
-            var Bugs = this.EncontrarPorCondicion(b => b.UsuarioId == idUsuario);
-            return await Task.FromResult(Bugs.ToList());
+            var Bugs = _contextDb.Bug
+                .Include("Usuario")
+                .Include("Proyecto")
+                .Where(p => p.UsuarioId == idUsuario);
+            return await Task.FromResult(Bugs.AsEnumerable());
         }
     }
 }

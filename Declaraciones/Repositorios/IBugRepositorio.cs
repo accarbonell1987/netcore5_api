@@ -56,6 +56,15 @@ namespace Declaraciones.Repositorios {
         Task<Bug> ObtenerBugPorUsuarioYProyetoAsinc(int idUsuario, int idProyecto);
 
         /// <summary>
+        /// Método de implementación asíncrono que permite obtener de la base de datos Bugs por medio del
+        /// id de proyecto y usuario
+        /// </summary>
+        /// <param name="idUsuario">idUsuario</param>
+        /// <param name="idProyecto">idProyecto</param>
+        /// <returns>Lista de Bug</returns>
+        Task<IEnumerable<Bug>> ObtenerBugsPorUsuarioYProyetoAsinc(int idUsuario, int idProyecto);
+
+        /// <summary>
         /// Método de implementación asíncrono que permite obtener de la base de datos los Bugs por medio del
         /// id de proyecto
         /// </summary>

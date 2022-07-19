@@ -4,6 +4,7 @@ using Entidades.Modelo.Extensiones;
 using Entidades.Modelos;
 using Entidades.Utilidades.Paginado;
 using Entidades.Utilidades.Paginado.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Repositorio.Base;
 using Repositorio.Utilidad;
 using System;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace Repositorios {
     public class ProyectoRepositorio : RepositorioBase<Project>, IProyectoRepositorio {
         private readonly ContextoBD _contextDb;
-
+        
         public ProyectoRepositorio(ContextoBD contextoBD) : base(contextoBD) { 
             _contextDb = contextoBD;
         }
@@ -108,8 +109,10 @@ namespace Repositorios {
         /// <param name="idProyecto">Id de Proyecto</param>
         /// <returns>Objeto Proyecto</returns>
         public async Task<Project> ObtenerProyectoPorIdAsinc(int idProyecto) {
-            var ProyectoEncontrado = this.EncontrarPorCondicion(Proyecto => Proyecto.Id.Equals(idProyecto));
-            return await Task.FromResult(ProyectoEncontrado.AsEnumerable().DefaultIfEmpty(new Project()).FirstOrDefault());
+            var ProyectoEncontrado = _contextDb.Projects
+                .Include(p => p.Bugs.Select(u => u.Usuario))
+                .FirstOrDefault(p => p.Id == idProyecto);
+            return await Task.FromResult(ProyectoEncontrado);
         }
     }
 }

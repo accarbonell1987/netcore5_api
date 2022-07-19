@@ -35,6 +35,7 @@ namespace BugsAPI {
             services.ConfigurarCapaReglaNegocios();
             services.AddControllers();
             services.ConfigurarSwaggerGen();
+            services.ConfiguarControladoresConJson();
         }
         #endregion
 

@@ -98,7 +98,7 @@ namespace BugsAPI.Controladores {
                         bugs = bugs.Where(p => p.CreacionBug >= convertidoStartDate && p.CreacionBug <= convertidoEndDate);
                     }
                 } else 
-                    return StatusCode(StatusCodes.Status404NotFound, "No existen datos para mostrar"));
+                    return StatusCode(StatusCodes.Status404NotFound, "No existen datos para mostrar");
 
                 return Ok(bugs);
             } catch (Exception ex) {

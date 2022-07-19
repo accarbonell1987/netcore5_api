@@ -67,5 +67,16 @@ namespace BugsAPI.Extensiones {
             services.AddScoped<UsuarioRN>();
             services.AddScoped<ProyectoRN>();
         }
+
+        /// <summary>
+        /// Configura Los controladores, para que puedan ser usados por NewtonsoftJson
+        /// </summary>
+        /// <param name="services">Services.</param>
+        public static void ConfiguarControladoresConJson(this IServiceCollection services) {
+            services.AddControllers()
+                    .AddNewtonsoftJson(x => {
+                        x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    });
+        }
     }
 }
