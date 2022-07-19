@@ -1,0 +1,15 @@
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\bin\Debug\net5.0\Declaraciones.deps.json
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\bin\Debug\net5.0\Declaraciones.dll
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\bin\Debug\net5.0\ref\Declaraciones.dll
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\bin\Debug\net5.0\Declaraciones.pdb
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\bin\Debug\net5.0\Entidades.dll
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\bin\Debug\net5.0\Entidades.pdb
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\Declaraciones.csproj.AssemblyReference.cache
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\Declaraciones.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\Declaraciones.AssemblyInfoInputs.cache
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\Declaraciones.AssemblyInfo.cs
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\Declaraciones.csproj.CoreCompileInputs.cache
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\Declaraciones.csproj.CopyComplete
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\Declaraciones.dll
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\ref\Declaraciones.dll
+C:\Users\accar\Documents\Trabajo\Github\TechInterview\netcore5_api\Declaraciones\obj\Debug\net5.0\Declaraciones.pdb
