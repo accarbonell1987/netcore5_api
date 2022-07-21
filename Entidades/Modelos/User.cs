@@ -19,5 +19,9 @@ namespace Entidades.Modelos {
         #region Relaciones
         public Bug Bug { get; set; }
         #endregion
+
+        #region Metodos
+        public string NombreYApellidos { get => $"{Nombres} {Apellidos}"; }
+        #endregion
     }
 }

@@ -156,7 +156,7 @@ namespace Repositorios {
                 .Include("Bugs.Usuario")
                 .FirstOrDefault(p => p.Id == idProyecto);
 
-            var Bugs = Proyecto?.Bugs;
+            var Bugs = Proyecto != null ? Proyecto?.Bugs : new List<Bug>();
 
             return await Task.FromResult(Bugs.AsEnumerable());
         }
@@ -172,6 +172,7 @@ namespace Repositorios {
                 .Include("Usuario")
                 .Include("Proyecto")
                 .Where(p => p.UsuarioId == idUsuario);
+
             return await Task.FromResult(Bugs.AsEnumerable());
         }
     }

@@ -58,7 +58,7 @@ namespace BugsAPI.Controladores {
         //•	Otherwise, you should return a 200 status code and response in the following JSON format:
 
         [HttpGet("bugs")]
-        [ProducesResponseType(typeof(Bug), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseBug), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status405MethodNotAllowed)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
@@ -75,7 +75,7 @@ namespace BugsAPI.Controladores {
                 if (!parametrosCorrectos) return StatusCode(StatusCodes.Status404NotFound, "Falla en los encabezados.");
                 
                 IEnumerable<Bug> bugs = new List<Bug>();
-                
+
                 //busqueda cuando existe la doble condicion de usuario y proyecto
                 if (project_id.HasValue && user_id.HasValue) 
                     bugs = await _reglasNegocios.BugRN.ObtenerBugsPorProyectoYUsuario((int)project_id, (int)user_id);
@@ -98,6 +98,66 @@ namespace BugsAPI.Controladores {
                         bugs = bugs.Where(p => p.CreacionBug >= convertidoStartDate && p.CreacionBug <= convertidoEndDate);
                     }
                 } else 
+                    return StatusCode(StatusCodes.Status404NotFound, "No existen datos para mostrar");
+
+                //mapear la respuesta al formato requerido
+                IEnumerable<ResponseBug> responseBugs = bugs.Select(
+                    p => new ResponseBug {
+                        Id = p.Id,
+                        Description = p.DescripcionBug,
+                        Project = p.Proyecto.DescripcionProyecto,
+                        Username = p.Usuario.NombreYApellidos,
+                        CreationDate = user_id.HasValue ? p.CreacionBug.ToString("dd/MM/yyyy HH:mm:ss") : null,
+                    });
+
+                return Ok(responseBugs);
+            } catch (Exception ex) {
+                _logger.LogInformation($"ERROR en controlador BugController.ObtenerBugs {ex.Message} {ex.InnerException.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Falla del origen de datos.");
+            }
+        }
+
+        [HttpGet("bugs/detail")]
+        [ProducesResponseType(typeof(Bug), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status405MethodNotAllowed)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> ObtenerBugsPorProyetoDetallado(
+            [FromQuery] int? project_id,
+            [FromQuery] int? user_id,
+            [FromQuery] string start_date,
+            [FromQuery] string end_date) {
+            try {
+                //validar encabezados
+                bool parametrosCorrectos = ParametrosHeaderCorrectos(project_id, user_id, start_date, end_date);
+                if (!parametrosCorrectos) return StatusCode(StatusCodes.Status404NotFound, "Falla en los encabezados.");
+
+                IEnumerable<Bug> bugs = new List<Bug>();
+
+                //busqueda cuando existe la doble condicion de usuario y proyecto
+                if (project_id.HasValue && user_id.HasValue)
+                    bugs = await _reglasNegocios.BugRN.ObtenerBugsPorProyectoYUsuario((int)project_id, (int)user_id);
+
+                //cuando solo existe proyecto
+                if (!bugs.Any() && project_id.HasValue)
+                    bugs = await _reglasNegocios.BugRN.ObtenerBugsPorProyecto((int)project_id);
+
+                //cuando solo existe usuario
+                if (!bugs.Any() && user_id.HasValue)
+                    bugs = await _reglasNegocios.BugRN.ObtenerBugsPorUsuario((int)user_id);
+
+                //si existen rango de fechas
+                if (bugs.Any()) {
+                    //si viene con rango de fecha
+                    var validoStartDate = DateTime.TryParse(start_date, out DateTime convertidoStartDate);
+                    var validoEndDate = DateTime.TryParse(end_date, out DateTime convertidoEndDate);
+
+                    if (validoStartDate && validoEndDate && convertidoEndDate > convertidoStartDate) {
+                        bugs = bugs.Where(p => p.CreacionBug >= convertidoStartDate && p.CreacionBug <= convertidoEndDate);
+                    }
+                } else
                     return StatusCode(StatusCodes.Status404NotFound, "No existen datos para mostrar");
 
                 return Ok(bugs);
