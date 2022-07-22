@@ -52,11 +52,6 @@ namespace BugsAPI.Controladores {
             }
         }
 
-        //•	at least one parameter is required;
-        //•	only the GET method is allowed, otherwise, a 405 status code is returned;
-        //•	if no bugs were found for filter conditions, a 404 status code is returned;
-        //•	Otherwise, you should return a 200 status code and response in the following JSON format:
-
         [HttpGet("bugs")]
         [ProducesResponseType(typeof(ResponseBug), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -159,6 +154,29 @@ namespace BugsAPI.Controladores {
                     }
                 } else
                     return StatusCode(StatusCodes.Status404NotFound, "No existen datos para mostrar");
+
+                return Ok(bugs);
+            } catch (Exception ex) {
+                _logger.LogInformation($"ERROR en controlador BugController.ObtenerBugs {ex.Message} {ex.InnerException.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Falla del origen de datos.");
+            }
+        }
+
+        [HttpGet("bugs/all")]
+        [ProducesResponseType(typeof(Bug), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status405MethodNotAllowed)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> ObtenerTodosBugs(
+            int? pagina,
+            int? tamanoPagina) {
+            try {
+                var bugs = await _reglasNegocios.BugRN.ObtenerTodosPaginado(pagina, tamanoPagina);
+
+                if (bugs.EsObjetoNulo())
+                    return NoContent();
 
                 return Ok(bugs);
             } catch (Exception ex) {

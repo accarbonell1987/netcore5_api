@@ -17,14 +17,16 @@ namespace BugsAPI.Extensiones {
         /// </summary>
         /// <param name="services">Services</param>
         public static void ConfigurarCors(this IServiceCollection services) {
-          services.AddCors(options =>
-          {
-            options.AddPolicy("CorsPolicy",
-                builder => builder
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .WithOrigins("https://localhost:3000", "http://localhost:3000"));
-          });
+            services.AddCors(options => {
+                options.AddPolicy("CorsPolicy", policy => {
+                    policy
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowAnyOrigin();
+                        //.WithOrigins("https://localhost:3000", "http://localhost:3000");
+                    });
+                }
+            );
         }
 
         /// <summary>

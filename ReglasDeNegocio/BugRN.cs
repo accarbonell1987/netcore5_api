@@ -1,6 +1,7 @@
 ﻿using AccesoDatos.Registros;
 using Entidades.Ayudas;
 using Entidades.Modelos;
+using Entidades.Utilidades.Paginado.Interfaces;
 using Microsoft.Extensions.Logging;
 using ReglasNegocio.Contenedor;
 using Repositorio.Contenedores.Interfaces;
@@ -47,6 +48,15 @@ namespace ReglasDeNegocio {
                 return bug;
             } catch (Exception ex) {
                 _log.LogInformation($"Error en la Regla de Negocios: BugRN.AdicionarBug: {ex.Message} {ex.InnerException.Message}");
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<IResultadoPaginado<Bug>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
+            try {
+                return await _contenedorRepositorio.Bug.ObtenerTodosPaginado(pagina, tamanoPagina);
+            } catch (Exception ex) {
+                _log.LogInformation($"Error en la Regla de Negocios: BugRN.ObtenerBugsPorProyecto: {ex.Message} {ex.InnerException.Message}");
                 throw new Exception(ex.Message);
             }
         }

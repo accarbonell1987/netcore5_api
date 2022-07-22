@@ -30,7 +30,7 @@ namespace Declaraciones.Repositorios {
         /// <param name="pagina">Página Actual</param>
         /// <param name="tamanoPagina">Elementos por Página</param>
         /// <returns>Objeto de Paginación con la Lista de Bugs</returns>
-        IResultadoPaginado<Bug> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null);
+        Task<IResultadoPaginado<Bug>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null);
 
         /// <summary>
         /// Método de implementación que permite obtener de la base de datos un Bug por medio de su Id

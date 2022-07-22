@@ -82,16 +82,17 @@ namespace Repositorios {
         /// <param name="pagina">Página Actual</param>
         /// <param name="tamanoPagina">Elementos por Página</param>
         /// <returns>Objeto de Paginación con la Lista de Bug</returns>
-        public IResultadoPaginado<Bug> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
-            var Bug = this.EncontrarTodos();
+        public async Task<IResultadoPaginado<Bug>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
+            var Bugs = _contextDb.Bug
+                .Include("Proyecto")
+                .Include("Usuario");
             if (pagina.HasValue && tamanoPagina.HasValue) {
-            return Bug.ObtenerPaginado(pagina.Value, tamanoPagina.Value);
+                return await Bugs.ObtenerPaginadoAsinc(pagina.Value, tamanoPagina.Value);
             }
 
-            //await Task.FromResult(listaAsignacionConsulta.AsEnumerable().ToList());
             return new ResultadoPaginado<Bug> {
-            ContadorFilas = Bug.Count(),
-            Resultados = Bug.AsEnumerable().ToList()
+                ContadorFilas = await Bugs.CountAsync(),
+                Resultados = await Task.FromResult(Bugs.AsEnumerable().ToList()) 
             };
         }
 
