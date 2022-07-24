@@ -20,10 +20,9 @@ namespace BugsAPI.Extensiones {
             services.AddCors(options => {
                 options.AddPolicy("CorsPolicy", policy => {
                     policy
-                        .AllowAnyMethod()
+                        .AllowAnyOrigin()
                         .AllowAnyHeader()
-                        .AllowAnyOrigin();
-                        //.WithOrigins("https://localhost:3000", "http://localhost:3000");
+                        .AllowAnyMethod();
                     });
                 }
             );

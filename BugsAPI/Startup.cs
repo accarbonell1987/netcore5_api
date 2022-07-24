@@ -48,8 +48,6 @@ namespace BugsAPI {
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BugsAPI v1"));
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseCors("CorsPolicy");
