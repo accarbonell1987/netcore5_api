@@ -75,25 +75,6 @@ namespace Repositorios {
         }
 
         /// <summary>
-        /// Método que permite obtener de la base de datos un objeto de Paginación con la lista de los Proyecto
-        /// </summary>
-        /// <param name="pagina">Página Actual</param>
-        /// <param name="tamanoPagina">Elementos por Página</param>
-        /// <returns>Objeto de Paginación con la Lista de Proyecto</returns>
-        public IResultadoPaginado<Project> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
-            var Proyecto = this.EncontrarTodos();
-            if (pagina.HasValue && tamanoPagina.HasValue) {
-            return Proyecto.ObtenerPaginado(pagina.Value, tamanoPagina.Value);
-            }
-
-            //await Task.FromResult(listaAsignacionConsulta.AsEnumerable().ToList());
-            return new ResultadoPaginado<Project> {
-            ContadorFilas = Proyecto.Count(),
-            Resultados = Proyecto.AsEnumerable().ToList()
-            };
-        }
-
-        /// <summary>
         /// Método que permite obtener de la base de datos un Proyecto por medio de su Id
         /// </summary>
         /// <param name="idProyecto">Id de Proyecto</param>
@@ -114,5 +95,25 @@ namespace Repositorios {
                 .FirstOrDefault(p => p.Id == idProyecto);
             return await Task.FromResult(ProyectoEncontrado);
         }
+
+        /// <summary>
+        /// Método que permite obtener de la base de datos un objeto de Paginación con la lista de los Bug
+        /// </summary>
+        /// <param name="pagina">Página Actual</param>
+        /// <param name="tamanoPagina">Elementos por Página</param>
+        /// <returns>Objeto de Paginación con la Lista de Bug</returns>
+        public async Task<IResultadoPaginado<Project>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
+            var Projects = _contextDb.Projects
+                .Include("Bugs.Usuario");
+            if (pagina.HasValue && tamanoPagina.HasValue) {
+                return await Projects.ObtenerPaginadoAsinc(pagina.Value, tamanoPagina.Value);
+            }
+
+            return new ResultadoPaginado<Project> {
+                ContadorFilas = await Projects.CountAsync(),
+                Resultados = await Task.FromResult(Projects.AsEnumerable().ToList())
+            };
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Entidades.Modelos;
+using Entidades.Utilidades.Paginado.Interfaces;
 using Microsoft.Extensions.Logging;
 using ReglasNegocio.Contenedor;
 using Repositorio.Contenedores.Interfaces;
@@ -29,6 +30,15 @@ namespace ReglasDeNegocio {
                 return usuario;
             } catch (Exception ex) {
                 _log.LogInformation($"Error en la Regla de Negocios: UsuarioRN.ObtenerUsuarioPorIdAsinc: {ex.Message} {ex.InnerException}");
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<IResultadoPaginado<User>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
+            try {
+                return await _contenedorRepositorio.Usuario.ObtenerTodosPaginado(pagina, tamanoPagina);
+            } catch (Exception ex) {
+                _log.LogInformation($"Error en la Regla de Negocios: UsuarioRN.ObtenerTodosPaginado: {ex.Message} {ex.InnerException.Message}");
                 throw new Exception(ex.Message);
             }
         }

@@ -25,14 +25,6 @@ namespace Declaraciones.Repositorios {
         Task<IEnumerable<Bug>> ObtenerTodosAsinc(int? pagina = null, int? tamanoPagina = null);
 
         /// <summary>
-        /// Método de implementación que permite obtener de la base de datos un objeto de Paginación con la lista de los Bugs
-        /// </summary>
-        /// <param name="pagina">Página Actual</param>
-        /// <param name="tamanoPagina">Elementos por Página</param>
-        /// <returns>Objeto de Paginación con la Lista de Bugs</returns>
-        Task<IResultadoPaginado<Bug>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null);
-
-        /// <summary>
         /// Método de implementación que permite obtener de la base de datos un Bug por medio de su Id
         /// </summary>
         /// <param name="idBug">idBug</param>
@@ -98,5 +90,13 @@ namespace Declaraciones.Repositorios {
         /// </summary>
         /// <param name="bug">Objeto Bug</param>
         void EliminarBug(Bug bug);
+
+        /// <summary>
+        /// Método de implementación que permite obtener de la base de datos un objeto de Paginación con la lista de los Bugs
+        /// </summary>
+        /// <param name="pagina">Página Actual</param>
+        /// <param name="tamanoPagina">Elementos por Página</param>
+        /// <returns>Objeto de Paginación con la Lista de Bugs</returns>
+        Task<IResultadoPaginado<Bug>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null);
     }
 }

@@ -77,26 +77,6 @@ namespace Repositorios {
         }
 
         /// <summary>
-        /// Método que permite obtener de la base de datos un objeto de Paginación con la lista de los Bug
-        /// </summary>
-        /// <param name="pagina">Página Actual</param>
-        /// <param name="tamanoPagina">Elementos por Página</param>
-        /// <returns>Objeto de Paginación con la Lista de Bug</returns>
-        public async Task<IResultadoPaginado<Bug>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
-            var Bugs = _contextDb.Bug
-                .Include("Proyecto")
-                .Include("Usuario");
-            if (pagina.HasValue && tamanoPagina.HasValue) {
-                return await Bugs.ObtenerPaginadoAsinc(pagina.Value, tamanoPagina.Value);
-            }
-
-            return new ResultadoPaginado<Bug> {
-                ContadorFilas = await Bugs.CountAsync(),
-                Resultados = await Task.FromResult(Bugs.AsEnumerable().ToList()) 
-            };
-        }
-
-        /// <summary>
         /// Método que permite obtener de la base de datos un bug por medio de su Id
         /// </summary>
         /// <param name="idBug">Id de bug</param>
@@ -175,6 +155,26 @@ namespace Repositorios {
                 .Where(p => p.UsuarioId == idUsuario);
 
             return await Task.FromResult(Bugs.AsEnumerable());
+        }
+
+        /// <summary>
+        /// Método que permite obtener de la base de datos un objeto de Paginación con la lista de los Bug
+        /// </summary>
+        /// <param name="pagina">Página Actual</param>
+        /// <param name="tamanoPagina">Elementos por Página</param>
+        /// <returns>Objeto de Paginación con la Lista de Bug</returns>
+        public async Task<IResultadoPaginado<Bug>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
+            var Bugs = _contextDb.Bug
+                .Include("Proyecto")
+                .Include("Usuario");
+            if (pagina.HasValue && tamanoPagina.HasValue) {
+                return await Bugs.ObtenerPaginadoAsinc(pagina.Value, tamanoPagina.Value);
+            }
+
+            return new ResultadoPaginado<Bug> {
+                ContadorFilas = await Bugs.CountAsync(),
+                Resultados = await Task.FromResult(Bugs.AsEnumerable().ToList())
+            };
         }
     }
 }

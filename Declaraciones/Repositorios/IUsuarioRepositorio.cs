@@ -25,14 +25,6 @@ namespace Declaraciones.Repositorios {
     Task<IEnumerable<User>> ObtenerTodosAsinc(int? pagina = null, int? tamanoPagina = null);
 
     /// <summary>
-    /// Método de implementación que permite obtener de la base de datos un objeto de Paginación con la lista de los Usuarios
-    /// </summary>
-    /// <param name="pagina">Página Actual</param>
-    /// <param name="tamanoPagina">Elementos por Página</param>
-    /// <returns>Objeto de Paginación con la Lista de Usuarios</returns>
-    IResultadoPaginado<User> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null);
-
-    /// <summary>
     /// Método de implementación que permite obtener de la base de datos un Usuario por medio de su Id
     /// </summary>
     /// <param name="idUsuario">idUsuario</param>
@@ -64,5 +56,13 @@ namespace Declaraciones.Repositorios {
     /// </summary>
     /// <param name="Usuario">Objeto Usuario</param>
     void EliminarUsuario(User usuario);
-  }
+
+        /// <summary>
+        /// Método de implementación que permite obtener de la base de datos un objeto de Paginación con la lista de los Usuarios
+        /// </summary>
+        /// <param name="pagina">Página Actual</param>
+        /// <param name="tamanoPagina">Elementos por Página</param>
+        /// <returns>Objeto de Paginación con la Lista de Usuarios</returns>
+        Task<IResultadoPaginado<User>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null);
+    }
 }
