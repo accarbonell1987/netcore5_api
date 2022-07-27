@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades.Modelos {
@@ -17,7 +18,7 @@ namespace Entidades.Modelos {
         #endregion
 
         #region Relaciones
-        public Bug Bug { get; set; }
+        public IList<Bug> Bugs { get; set; }
         #endregion
 
         #region Metodos

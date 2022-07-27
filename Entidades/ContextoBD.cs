@@ -33,9 +33,8 @@ namespace Entidades {
                 .WithOne(b => b.Proyecto);
 
             modelBuilder.Entity<User>()
-                .HasOne(u => u.Bug)
-                .WithOne(b => b.Usuario)
-                .HasForeignKey<Bug>(b => b.UsuarioId);
+                .HasMany(u => u.Bugs)
+                .WithOne(b => b.Usuario);
 
             //base.OnModelCreating(modelBuilder);
         }

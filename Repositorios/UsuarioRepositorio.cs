@@ -103,7 +103,7 @@ namespace Repositorios {
         /// <returns>Objeto de Paginación con la Lista de Usuarios</returns>
         public async Task<IResultadoPaginado<User>> ObtenerTodosPaginado(int? pagina = null, int? tamanoPagina = null) {
             var Users = _contextDb.Users
-                .Include("Bug");
+                .Include("Bugs");
             if (pagina.HasValue && tamanoPagina.HasValue) {
                 return await Users.ObtenerPaginadoAsinc(pagina.Value, tamanoPagina.Value);
             }
