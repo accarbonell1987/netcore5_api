@@ -71,7 +71,7 @@ namespace Repositorios {
             return Proyecto.ObtenerListaPaginada(pagina.Value, tamanoPagina.Value);
             }
 
-            return await Task.FromResult(Proyecto.AsEnumerable().ToList());
+            return await Proyecto.ToListAsync();
         }
 
         /// <summary>
@@ -92,8 +92,8 @@ namespace Repositorios {
         public async Task<Project> ObtenerProyectoPorIdAsinc(int idProyecto) {
             var ProyectoEncontrado = _contextDb.Projects
                 .Include("Bugs.Usuario")
-                .FirstOrDefault(p => p.Id == idProyecto);
-            return await Task.FromResult(ProyectoEncontrado);
+                .FirstOrDefaultAsync(p => p.Id == idProyecto);
+            return await ProyectoEncontrado;
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Repositorios {
 
             return new ResultadoPaginado<Project> {
                 ContadorFilas = await Projects.CountAsync(),
-                Resultados = await Task.FromResult(Projects.AsEnumerable().ToList())
+                Resultados = await Projects.ToListAsync()
             };
         }
 

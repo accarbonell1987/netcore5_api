@@ -70,10 +70,10 @@ namespace Repositorios {
         public async Task<IEnumerable<Bug>> ObtenerTodosAsinc(int? pagina = null, int? tamanoPagina = null) {
             var Bug = this.EncontrarTodos();
             if (pagina.HasValue && tamanoPagina.HasValue) {
-            return Bug.ObtenerListaPaginada(pagina.Value, tamanoPagina.Value);
+                return Bug.ObtenerListaPaginada(pagina.Value, tamanoPagina.Value);
             }
 
-            return await Task.FromResult(Bug.AsEnumerable().ToList());
+            return await Bug.ToListAsync();
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Repositorios {
         /// <returns>Objeto bug</returns>
         public async Task<Bug> ObtenerBugPorIdAsinc(int idBug) {
             var bugEncontrado = this.EncontrarPorCondicion(bug => bug.Id.Equals(idBug));
-            return await Task.FromResult(bugEncontrado.AsEnumerable().DefaultIfEmpty(new Bug()).FirstOrDefault());
+            return await bugEncontrado.DefaultIfEmpty(new Bug()).FirstOrDefaultAsync();
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Repositorios {
                 .Include(p => p.Proyecto)
                 .Include(u => u.Usuario)
                 .Where(b => b.ProyectoId == idProyecto && b.UsuarioId == idUsuario);
-            return await Task.FromResult(Bugs.AsEnumerable().DefaultIfEmpty(null).FirstOrDefault());
+            return await Bugs.DefaultIfEmpty(null).FirstOrDefaultAsync();
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Repositorios {
                 .Include("Proyecto")
                 .Include("Usuario")
                 .Where(b => b.ProyectoId == idProyecto && b.UsuarioId == idUsuario);
-            return await Task.FromResult(Bugs.AsEnumerable());
+            return await Bugs.ToListAsync();
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Repositorios {
 
             var Bugs = Proyecto != null ? Proyecto?.Bugs : new List<Bug>();
 
-            return await Task.FromResult(Bugs.AsEnumerable());
+            return await Bugs.AsQueryable().ToListAsync();
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Repositorios {
                 .Include("Proyecto")
                 .Where(p => p.UsuarioId == idUsuario);
 
-            return await Task.FromResult(Bugs.AsEnumerable());
+            return await Bugs.ToListAsync();
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Repositorios {
 
             return new ResultadoPaginado<Bug> {
                 ContadorFilas = await Bugs.CountAsync(),
-                Resultados = await Task.FromResult(Bugs.AsEnumerable().ToList())
+                Resultados = await Bugs.ToListAsync()
             };
         }
     }

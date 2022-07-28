@@ -88,7 +88,7 @@ namespace Repositorio.Utilidad
 
             var salto = (pagina - 1) * tamanoPagina;
             var resultados = consulta.Skip(salto).Take(tamanoPagina).AsEnumerable();
-            resultado.Resultados = await Task.FromResult(resultados.ToList());
+            resultado.Resultados = await resultados.AsQueryable().ToListAsync();
 
             return resultado;
         }
@@ -107,7 +107,7 @@ namespace Repositorio.Utilidad
         {
             var salto = (pagina - 1) * tamanoPagina;
             var resultadosEnumerados = consulta.Skip(salto).Take(tamanoPagina).AsEnumerable();
-            var resultados = await Task.FromResult(resultadosEnumerados.ToList());
+            var resultados = await resultadosEnumerados.AsQueryable().ToListAsync();
 
             return resultados;
         }

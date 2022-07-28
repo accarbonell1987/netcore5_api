@@ -72,7 +72,7 @@ namespace Repositorios {
             return usuarios.ObtenerListaPaginada(pagina.Value, tamanoPagina.Value);
           }
 
-          return await Task.FromResult(usuarios.AsEnumerable().ToList());
+          return await usuarios.ToListAsync();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Repositorios {
         /// <returns>Objeto Usuario</returns>
         public User ObtenerUsuarioPorId(int idUsuario) {
           var usuarioEncontrado = this.EncontrarPorCondicion(usuario => usuario.Id.Equals(idUsuario));
-          return usuarioEncontrado.AsEnumerable().DefaultIfEmpty(new User()).FirstOrDefault();
+          return usuarioEncontrado.DefaultIfEmpty(new User()).FirstOrDefault();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Repositorios {
         /// <returns>Objeto Usuario</returns>
         public async Task<User> ObtenerUsuarioPorIdAsinc(int idUsuario) {
           var usuarioEncontrado = this.EncontrarPorCondicion(usuario => usuario.Id.Equals(idUsuario));
-          return await Task.FromResult(usuarioEncontrado.AsEnumerable().DefaultIfEmpty(new User()).FirstOrDefault());
+          return await usuarioEncontrado.DefaultIfEmpty(new User()).FirstOrDefaultAsync();
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Repositorios {
 
             return new ResultadoPaginado<User> {
                 ContadorFilas = await Users.CountAsync(),
-                Resultados = await Task.FromResult(Users.AsEnumerable().ToList())
+                Resultados = await Users.ToListAsync()
             };
         }
     }
